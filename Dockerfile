@@ -3,8 +3,9 @@ LABEL Augusto Branquinho <augustobranquinho@gmail.com>
 
 # Requirements
 RUN yum -y update && \
-    yum -y install wget && \
-    yum -y install which
+     yum -y install wget && \
+     yum -y install which \
+     yum -y net-tools
 
 # HDP Repositories
 RUN wget http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.6.4.0/hdp.repo -O /etc/yum.repos.d/hdp.repo
@@ -39,8 +40,6 @@ ENV JAVA_HOME /usr/java/latest
 
 
 
-# RUN echo "export HIVE_HOME=$ {HIVE_HOME:-/usr/hdp/current/hive-server2}" >> /usr/bin/sqoop
+RUN echo "export HIVE_HOME=$ {HIVE_HOME:-/usr/hdp/current/hive-server2}" >> /usr/bin/sqoop
 
 # ENTRYPOINT ["/etc/sqoop/init-sqoop"]
-#wget --header="Cookie:oraclelicense=accept-securebackup-cookie" --no-check-certificate http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.rpm
-
